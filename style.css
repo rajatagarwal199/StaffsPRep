@@ -1,0 +1,161 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Header section */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-title h2 {
+    margin: 0;
+}
+
+.dropdown-btn {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+}
+
+#time {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+#hide-btn {
+    background-color: #f1f1f1;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+/* Main Test Content Layout (Split screen) */
+.test-content {
+    display: flex;
+    justify-content: space-between;
+    height: 500px;
+}
+
+.context-section {
+    width: 50%;
+    padding-right: 10px;
+    border-right: 1px solid #ccc;
+}
+
+.choices-section {
+    width: 50%;
+    padding-left: 10px;
+}
+
+/* Question container */
+.question-container {
+    margin-top: 20px;
+}
+
+.passage {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.choices h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.choices label {
+    display: block;
+    margin: 10px 0;
+}
+
+.mark-btn {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Navigation */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.nav-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.nav-btn:hover {
+    background-color: #0056b3;
+}
+
+.question-count {
+    font-size: 14px;
+}
+
+/* Navigator Popup */
+.navigator-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #ccc;
+    z-index: 1000;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navigator-options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.navigator-options button {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.navigator-options button:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Results container */
+.results-container {
+    text-align: center;
+    margin-top: 50px;
+}

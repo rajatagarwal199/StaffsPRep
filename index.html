@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Test Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header section -->
+        <header>
+            <div class="section-title">
+                <h2 id="section-name">Section 1: Reading and Writing</h2>
+                <button class="dropdown-btn">Directions &#9660;</button>
+            </div>
+            <div class="timer">
+                <span id="time">31:14</span>
+                <button id="hide-btn">Hide</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="test-content">
+            <!-- Left: Question context -->
+            <div class="context-section">
+                <div class="passage" id="passage">
+                    <p>This is the reading passage text that will change with each question...</p>
+                </div>
+            </div>
+
+            <!-- Right: Question direction and choices -->
+            <div class="choices-section">
+                <div class="question-container" id="question-container">
+                    <div class="choices">
+                        <h3 id="question-text">Question text goes here...</h3>
+                        <label><input type="radio" name="answer" value="A"> A) Option A</label><br>
+                        <label><input type="radio" name="answer" value="B"> B) Option B</label><br>
+                        <label><input type="radio" name="answer" value="C"> C) Option C</label><br>
+                        <label><input type="radio" name="answer" value="D"> D) Option D</label><br>
+                        <button class="mark-btn">Mark for Review</button>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="navigation">
+                    <button class="nav-btn" id="prev-btn">Back</button>
+                    <button class="nav-btn" id="next-btn">Next</button>
+                    <span class="question-count" id="question-count">Question 1 of 25</span>
+                    <button class="nav-btn" id="question-navigator">Question Navigator</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Question Navigator Popup -->
+    <div id="navigator-popup" class="navigator-popup" style="display:none;">
+        <h2 id="module-name">Section Questions</h2>
+        <div class="navigator-options">
+            <!-- Question numbers will be dynamically created -->
+        </div>
+        <button id="close-navigator">Close Navigator</button>
+    </div>
+
+    <div class="results-container" id="results-container" style="display:none;">
+        <h2>Your Results</h2>
+        <p id="results-text">You scored X out of 100</p>
+        <button id="restart-btn">Restart Test</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
