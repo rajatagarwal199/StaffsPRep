@@ -1,10 +1,14 @@
-// Timer functionality (fixed at 31:14)
-let time = 31 * 60 + 14; // 31 minutes and 14 seconds
+// Timer functionality (32 minutes for Reading Module 1, 35 minutes for Math Module 1, and so on)
+let time;
 let currentQuestionIndex = 0;
 let currentModuleIndex = 0;
 let totalQuestions = 25;
 let totalModules = 4;
 let userAnswers = [];
+let timerInterval;
+
+// Define time limits for each module
+const moduleTimes = [32 * 60, 35 * 60, 32 * 60, 35 * 60]; // Reading 1: 32 min, Math 1: 35 min, Reading 2: 32 min, Math 2: 35 min
 
 // Define questions directly for each module with placeholders
 // Define questions directly for each module with space for 25 questions
@@ -126,6 +130,7 @@ const modules = [
     }
 ];
 
+// Function to load the next question
 function loadQuestion() {
     const module = modules[currentModuleIndex];
     const question = module.questions[currentQuestionIndex];
@@ -139,12 +144,20 @@ function loadQuestion() {
     document.getElementById('question-count').innerText = `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
 }
 
+// Function to start the timer based on the module time
 function startTimer() {
+    clearInterval(timerInterval); // Clear any existing timer
+
+    // Set the time for the current module
+    time = moduleTimes[currentModuleIndex];
+    
     const timerElement = document.getElementById('time');
-    const timerInterval = setInterval(() => {
+    
+    // Start the interval for the timer
+    timerInterval = setInterval(() => {
         if (time <= 0) {
             clearInterval(timerInterval);
-            timerElement.innerHTML = 'Time\'s up!';
+            moveToNextModule(); // Move to the next module automatically when time runs out
         } else {
             time--;
             const minutes = Math.floor(time / 60);
@@ -154,7 +167,17 @@ function startTimer() {
     }, 1000);
 }
 
-startTimer();
+// Function to move to the next module automatically
+function moveToNextModule() {
+    if (currentModuleIndex < totalModules - 1) {
+        currentModuleIndex++;
+        currentQuestionIndex = 0; // Reset question index
+        loadQuestion();
+        startTimer(); // Start the timer for the next module
+    } else {
+        showResults(); // Show results if all modules are done
+    }
+}
 
 // Hide button functionality
 document.getElementById('hide-btn').addEventListener('click', () => {
@@ -181,14 +204,8 @@ document.getElementById('next-btn').addEventListener('click', () => {
     if (currentQuestionIndex < totalQuestions - 1) {
         currentQuestionIndex++;
         loadQuestion();
-    } else if (currentModuleIndex < totalModules - 1) {
-        // Move to the next module
-        currentModuleIndex++;
-        currentQuestionIndex = 0;
-        loadQuestion();
     } else {
-        // All modules are done, show results
-        showResults();
+        moveToNextModule(); // Automatically move to the next module if it's the last question
     }
 });
 
@@ -226,5 +243,6 @@ document.getElementById('restart-btn').addEventListener('click', () => {
     location.reload();
 });
 
-// Initialize with the first question
+// Initialize with the first question and start the timer
 loadQuestion();
+startTimer();
